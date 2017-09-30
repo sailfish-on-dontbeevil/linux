@@ -1007,6 +1007,13 @@ config VIDEO_S5C73M3
 	help
 	  This is a V4L2 sensor driver for Samsung S5C73M3
 	  8 Mpixel camera.
+
+config VIDEO_HM5065
+	tristate "Himax HM5065 sensor support"
+	depends on I2C && VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
+	---help---
+	  This is a V4L2 sensor-level driver for Himax HM5065
+	  5 Mpixel camera.
 endif
 
 comment "Lens drivers"
