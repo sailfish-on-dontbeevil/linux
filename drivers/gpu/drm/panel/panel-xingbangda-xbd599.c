@@ -128,19 +128,19 @@ static int xbd599_init_sequence(struct xbd599 *ctx)
 			  0x18, 0x00, 0x09, 0x0D, 0x23, 0x27, 0x3C, 0x41,
 			  0x35, 0x07, 0x0D, 0x0E, 0x12, 0x13, 0x10, 0x12,
 			  0x12, 0x18);
-	msleep(20);
+	msleep(10);
 
 	ret = mipi_dsi_dcs_exit_sleep_mode(dsi);
 	if (ret < 0) {
 		DRM_DEV_ERROR(dev, "Failed to exit sleep mode\n");
 		return ret;
 	}
-	msleep(250);
+	msleep(10);
 
 	ret = mipi_dsi_dcs_set_display_on(dsi);
 	if (ret)
 		return ret;
-	msleep(50);
+	msleep(10);
 
 	DRM_DEV_DEBUG_DRIVER(dev, "Panel init sequence done\n");
 	return 0;
@@ -186,7 +186,7 @@ static int xbd599_prepare(struct drm_panel *panel)
 	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
 	usleep_range(20, 40);
 	gpiod_set_value_cansleep(ctx->reset_gpio, 0);
-	msleep(20);
+	msleep(10);
 
 	ret = xbd599_init_sequence(ctx);
 	if (ret < 0) {
