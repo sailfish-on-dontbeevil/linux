@@ -91,6 +91,7 @@
 		regulator-min-microvolt = <3500000>;
 		regulator-max-microvolt = <3500000>;
 		gpio = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
+		regulator-always-on;
 		enable-active-high;
 	};
 
