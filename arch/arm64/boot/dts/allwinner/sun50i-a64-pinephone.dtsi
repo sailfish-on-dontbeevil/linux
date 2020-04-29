@@ -130,10 +130,8 @@
 		vcc-supply = <&reg_dcdc1>;
 	};
 
-	sgm3140 {
+	sgm3140: led-controller {
 		compatible = "sgmicro,sgm3140";
-		flash-gpios = <&pio 3 24 GPIO_ACTIVE_HIGH>; /* FLASH_TRIGOUT: PD24 */
-		enable-gpios = <&pio 2 3 GPIO_ACTIVE_HIGH>; /* FLASH_EN: PC3 */
 
 		sgm3140_flash: led {
 			function = LED_FUNCTION_FLASH;
