@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+// Copyright (C) 2020 Marius Gripsgard <marius@ubports.com>
+
+/dts-v1/;
+
+#include "sun50i-a64-pinephone.dtsi"
+
+#include <dt-bindings/input/gpio-keys.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	model = "Pine64 PinePhone (1.2)";
+	compatible = "pine64,pinephone-1.2", "allwinner,sun50i-a64";
+
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		ring-indicator {
+			label = "Ring Indicator";
+			gpios = <&r_pio 0 6 GPIO_ACTIVE_LOW>; /* PL6 */
+			linux,code = <KEY_WAKEUP>;
+			wakeup-event-action = <EV_ACT_ASSERTED>;
+			wakeup-source;
+		};
+	};
+};
+
+&sgm3140 {
+	flash-gpios = <&pio 2 3 GPIO_ACTIVE_HIGH>; /* PC3 */
+	enable-gpios = <&pio 3 24 GPIO_ACTIVE_HIGH>; /* PD24 */
+};
